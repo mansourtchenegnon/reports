@@ -1,2 +1,2 @@
-# reports
+# Reports
 Repository for reports
