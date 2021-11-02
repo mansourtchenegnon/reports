@@ -5,7 +5,6 @@ L'erreur au cours de l'entraînement est minimisée jusqu'à 100 mm, 2 fois moin
 ***
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ancien modèle
-<center>
 
 ![Courbe d'évolution de l'erreur MPJPE lors de l'entraînement de l'ancien modèle.](./images/old_loss.png  "Evolution de l'erreur MPJPE lors de l'entraînement de l'ancien modèle.")
 *Figure 1: Evolution de l'erreur MPJPE lors de l'entraînement de l'ancien modèle.*
@@ -18,14 +17,10 @@ L'erreur au cours de l'entraînement est minimisée jusqu'à 100 mm, 2 fois moin
 
 *Table 1: Tableau présentant les résultats d'évaluation de l'ancien.*
 
-</center>
-
-
 ***
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modèle amélioré
 
-<center>
 
 ![Courbe d'évolution de l'erreur MPJPE lors de l'entraînement du modèle amélioré.](./images/new_loss.png  "Evolution de l'erreur MPJPE lors de l'entraînement du modèle amélioré.")
 
@@ -39,7 +34,6 @@ L'erreur au cours de l'entraînement est minimisée jusqu'à 100 mm, 2 fois moin
 
 *Table 2: Tableau présentant les résultats d'évaluation du modèle amélioré.*
 
-</center>
 
 > Comme on le présente les tableaux Table 1 et Table 2, le modèle amélioré présente une erreur plus petite lors de l'entraînement. Mais cela implique qu'il s'adapte moins au mouvements qui ne sont pas représentés, notamment le "Break Dance".
 
@@ -62,12 +56,10 @@ Avec l'architecture actuelle du modèle, lors de l'entraînement, la perte (MPJP
 1. Estimation par articulation
 Cette idée propose de subdivisé le modèle en 16 sous-modèles indépendants chargé chacun d'estimer la position de chaque articulation. 
 
-<center>
 
 ![Architecture par sous-modèles d'articulations.](./images/submodeling.jpg  "Principe d'entraînement de l'architecture par sous-modèles d'articulations.")
 *Figure 3: Principe d'entraînement de l'architecture par sous-modèles.*
 
-</center>
 
 > Cette architecture permettra à chaque sous-modèle d'apprendre la position d'une et une seule articulation. On peut améliorer cette architecture en focalisant l'entraînement sur la trajectoire de l'articulation dans le temps (fonction de perte).
 
@@ -76,12 +68,10 @@ Cette idée propose de subdivisé le modèle en 16 sous-modèles indépendants c
 
 L'idée de cette approche est de regrouper les articulations par parties du corps. La perte sera donc calculée et appliquée par partie du corps comme le montre la Figure 4.
 
-<center>
 
 ![Architecture par sous-modèles de parties du corps.](./images/bodyparts.jpg  "Principe d'entraînement de l'architecture par sous-modèles de parties du corps.")
 *Figure 4: Principe d'entraînement de l'architecture par sous-modèles.*
 
-</center>
 
 > Pour cette architecture tout comme pour une arcitecture qui estime directement l'ensemble du articulations, l'erreur MPJPE reste insuffisante. Il faudra probablement envisagé d'autres fonctions de perte plus adaptées.
 
@@ -91,25 +81,25 @@ Lors de la réunion nous avons évoqué 4 variétés de la fonction MPJPE.
 Soit *T* et *J* respectivement la taille de la séquence et le nombre d'articulations. On a:
 * Equation 1:
 
-$$\epsilon_{j,t}=\Vert\overline{p}_{t}^{j}-p_{t}^{j}\Vert$$
+$\epsilon_{j,t}=\Vert\overline{p}_{t}^{j}-p_{t}^{j}\Vert$
 
 > Pour cette première équation, on a l'erreur pour une articulation *j* à un instant *t* de la séquence. C'est la distance entre la position réelle et la position estimée de l'articulation.
 
 * Equation 2:
 
-$$\epsilon=\frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}$$
+$\epsilon=\frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}$
 
 > L'équation 2 représente l'erreur moyenne par articulation pour une seul frame. Elle renverra dans ce cas, une liste d'erreur de taille *T*. 
 
 * Equation 3:
 
-$$\epsilon=\frac{1}{T}\sum_{t=1}^{T}\epsilon_{j,t}$$
+$\epsilon=\frac{1}{T}\sum_{t=1}^{T}\epsilon_{j,t}$
 
 > Cette erreur représente la moyenne d'erreur tout au long de la séquence pour une articulation données. On obtient donc dans notre cas une liste d'erreur de taille *J=16*.
 
 * Equation 4:
 
-$$\epsilon=\frac{1}{T}\sum_{t=1}^{T} \frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}$$
+$\epsilon=\frac{1}{T}\sum_{t=1}^{T} \frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}$
 
 > Cette équation représente l'erreur moyenne par articulation et sur l'ensemble de la séquence. C'est un scalaire. C'est aussi l'erreur que nous utilisons actuellement.
 
@@ -121,7 +111,3 @@ On pourra envisager l'idée d'une erreur par groupe d'articulations dans le cas 
 2. Adapter et entrainer le modèle de MotioNet et observer le résultat. Cela permettra de comprendre si le problème vient du fait que l'on estime directement les poses sans passer par les rotations.
 3. Penser à une nouvelle fonction de perte adapter au mouvement.
 4. Mettre en place la phase de lissage spatio-temporelle utilisant la représentation Laplacienne.
-
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
