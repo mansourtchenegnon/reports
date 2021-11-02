@@ -81,25 +81,25 @@ Lors de la réunion nous avons évoqué 4 variétés de la fonction MPJPE.
 Soit *T* et *J* respectivement la taille de la séquence et le nombre d'articulations. On a:
 * Equation 1:
 
-$\epsilon_{j,t}=\Vert\overline{p}_{t}^{j}-p_{t}^{j}\Vert$
+\epsilon_{j,t}=\Vert\overline{p}_{t}^{j}-p_{t}^{j}\Vert
 
 > Pour cette première équation, on a l'erreur pour une articulation *j* à un instant *t* de la séquence. C'est la distance entre la position réelle et la position estimée de l'articulation.
 
 * Equation 2:
 
-$\epsilon=\frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}$
+\epsilon=\frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}
 
 > L'équation 2 représente l'erreur moyenne par articulation pour une seul frame. Elle renverra dans ce cas, une liste d'erreur de taille *T*. 
 
 * Equation 3:
 
-$\epsilon=\frac{1}{T}\sum_{t=1}^{T}\epsilon_{j,t}$
+\epsilon=\frac{1}{T}\sum_{t=1}^{T}\epsilon_{j,t}
 
 > Cette erreur représente la moyenne d'erreur tout au long de la séquence pour une articulation données. On obtient donc dans notre cas une liste d'erreur de taille *J=16*.
 
 * Equation 4:
 
-$\epsilon=\frac{1}{T}\sum_{t=1}^{T} \frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}$
+\epsilon=\frac{1}{T}\sum_{t=1}^{T} \frac{1}{J}\sum_{j=1}^{J}\epsilon_{j,t}
 
 > Cette équation représente l'erreur moyenne par articulation et sur l'ensemble de la séquence. C'est un scalaire. C'est aussi l'erreur que nous utilisons actuellement.
 
