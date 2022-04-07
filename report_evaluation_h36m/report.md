@@ -5,7 +5,7 @@ On considère une pose par un vecteur des positions des articulations du squelet
 Une séquence de pose est une suite de vecteurs décrivant les poses du squelette en fonction du temps. On considère en comme donnée d'entrée du modèle une séquence de poses en 2D qu'on note ![P2D](https://render.githubusercontent.com/render/math?math=P_{2D}) et comme donnée résultat une séquence de pose en 3D ![P2D](https://render.githubusercontent.com/render/math?math=P_{3D}).
 L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence de pose de longueur T :
 <center>
-![f](https://render.githubusercontent.com/render/math?math={P_{3D}\=f(P_{2D})})
+![f](https://render.githubusercontent.com/render/math?math={P_{3D}=f(P_{2D})})
 </center>
 
 ![P2D](https://render.githubusercontent.com/render/math?math=P_{2D}) est de dimension [1,T,2xJ] et ![P3D](https://render.githubusercontent.com/render/math?math=P_{3D}) est de dimension [1,T,3xJ]
@@ -13,7 +13,7 @@ L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence 
 Voici l'architecture du modèle utilisé pour réaliser cette tâche:
 
 <center>
-![Network architecture](./network-architecture.png)
+![Network architecture](./network-architecture.png "CVMNet")
 
 *Figure1: Architecture du modèle d'estimation de poses 3D*
 </center>
