@@ -1,38 +1,14 @@
-<script
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-  type="text/javascript">
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      processEscapes: true},
-      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
-      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
-      TeX: {
-      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
-      equationNumbers: {
-      autoNumber: "AMS"
-      }
-    }
-  });
-</script>
-
-
 # Rapport d'evaluation du modèle CVMNet
 
 ## Architecture du modèle
-On considère une pose par un vecteur des positions des articulations du squelette. On simplifie le squelette à un nombre d'articulations $J=17$.
-Une séquence de pose est une suite de vecteurs décrivant les poses du squelette en fonction du temps. On considère en comme donnée d'entrée du modèle une séquence de poses en 2D qu'on note $P_{2D}$ et comme donnée résultat une séquence de pose en 3D $P_{3D}$.
-L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence de pose de longueur $T$ :
-$$
-\begin{align}
-  \tag{1}
-  P_{3D} = f(P_{2D})
-\end{align}
-$$
+On considère une pose par un vecteur des positions des articulations du squelette. On simplifie le squelette à un nombre d'articulations J=17.
+Une séquence de pose est une suite de vecteurs décrivant les poses du squelette en fonction du temps. On considère en comme donnée d'entrée du modèle une séquence de poses en 2D qu'on note ![P2D](https://render.githubusercontent.com/render/math?math=P_{2D}) et comme donnée résultat une séquence de pose en 3D ![P2D](https://render.githubusercontent.com/render/math?math=P_{3D}).
+L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence de pose de longueur T :
+<center>
+![f](https://render.githubusercontent.com/render/math?math=P_{3D}=f(P_{2D}))
+</center>
 
-$P_{2D}$ est de dimension [1,T,2xJ] et $P_{3D}$ est de dimension [1,T,3xJ]
+![P2D](https://render.githubusercontent.com/render/math?math=P_{2D}) est de dimension [1,T,2xJ] et ![P3D](https://render.githubusercontent.com/render/math?math=P_{3D}) est de dimension [1,T,3xJ]
 
 Voici l'architecture du modèle utilisé pour réaliser cette tâche:
 <center>
