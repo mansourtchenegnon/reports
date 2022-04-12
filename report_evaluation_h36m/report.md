@@ -27,7 +27,7 @@ CVMNet (1 bloc) + Motion Loss | 83.67 | 107.73 | 118.72 | 95.51 | 113.39 | 131.9
 CVMNet (2 blocs) + Motion Loss | 80.42 | 109.11 | 116.61 | 91.58 | 123.84 | 127.46 | 83.96 | 169.57 | 162.69 | 224.39 | 120.81 | 97.64 | 175.52 | 84.30 | 84.20 | 124.20 |
 CVMNet (1 bloc) + Laplacian Loss | 101.87 | 109.28 | 132.03 | 112.66 | 132.24 | 137.74 | 101.83 | 143.06 | 173.79 | 250.92 | 132.66 | 108.66 | 148.33 | 102.81 | 107.41 | 133.55 |
 MotioNet | 45.48 | 51.28 | 49.43 | 51.91 | 52.58 | 66.46 | 50.59 | 48.46 | 55.90 | 64.25 | 53.79 | 52.84 | 58.85 | 49.99 | 48.25 | 53.47 |
-
+*Table1: Tableau comparatif des résultats de l'évaluation des différents modèles. Les modèles CVMNet ont été entraîné pendant 150 epochs sauf le celui avec la fonction laplacienne qui a été entrainé sur 50 epochs pour des raisons de complexité temporelle.*
 ### Quelques résultats graphiques
 Action | Vérité terrain | Motionet | CVMNet(1bloc + Motion Loss) | CVMNet(2blocs + Motion Loss) |
 :-----:|:-----:|:-----:|:-----:|:-----:|
