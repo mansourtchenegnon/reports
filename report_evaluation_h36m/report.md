@@ -19,6 +19,8 @@ Voici l'architecture du modèle utilisé pour réaliser cette tâche:
 
 On évalue le modèle en utilisant le Protocol#1 du benchmark Human3.6m. Le tableau Table 1 ci-après représente les résultats de l'évaluation.
 
+*Table1: Tableau comparatif des résultats de l'évaluation des différents modèles. Les modèles CVMNet ont été entraîné pendant 150 epochs sauf le celui avec la fonction laplacienne qui a été entrainé sur 50 epochs pour des raisons de complexité temporelle.*
+
 Modèles | Directions | Discussion | Eating | Greeting | Phoning | Photo | Posing | Purchases | Sitting | SittingDown | Smoking | Waiting | WalkDog | Walking | WalkTogether | Average |
 :--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 CVMNet (1 bloc) | 85.25 | 129.41 | 109.17 | 101.22 | 117.17 | 137.31 | 86.12 | 293.37 | 152.75 | 248.98 | 119.87 | 105.45 | 261.62 | 87.20 | 87.81 | 142.47 |
@@ -28,7 +30,7 @@ CVMNet (2 blocs) + Motion Loss | 80.42 | 109.11 | 116.61 | 91.58 | 123.84 | 127.
 CVMNet (1 bloc) + Laplacian Loss | 101.87 | 109.28 | 132.03 | 112.66 | 132.24 | 137.74 | 101.83 | 143.06 | 173.79 | 250.92 | 132.66 | 108.66 | 148.33 | 102.81 | 107.41 | 133.55 |
 MotioNet | 45.48 | 51.28 | 49.43 | 51.91 | 52.58 | 66.46 | 50.59 | 48.46 | 55.90 | 64.25 | 53.79 | 52.84 | 58.85 | 49.99 | 48.25 | 53.47 |
 
-*Table1: Tableau comparatif des résultats de l'évaluation des différents modèles. Les modèles CVMNet ont été entraîné pendant 150 epochs sauf le celui avec la fonction laplacienne qui a été entrainé sur 50 epochs pour des raisons de complexité temporelle.*
+
 ### Quelques résultats graphiques
 Action | Vérité terrain | Motionet | CVMNet(1bloc + Motion Loss) | CVMNet(2blocs + Motion Loss) |
 :-----:|:-----:|:-----:|:-----:|:-----:|
