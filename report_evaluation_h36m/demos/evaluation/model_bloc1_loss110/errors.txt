@@ -1,0 +1,17 @@
+=====Action===== ==mm==
+      Directions 83.67 
+      Discussion 107.73 
+          Eating 118.72 
+        Greeting 95.51 
+         Phoning 113.39 
+           Photo 131.98 
+          Posing 82.64 
+       Purchases 221.00 
+         Sitting 148.74 
+     SittingDown 232.07 
+         Smoking 113.56 
+         Waiting 95.76 
+         WalkDog 195.00 
+         Walking 85.04 
+    WalkTogether 83.95 
+         Average 127.99 
