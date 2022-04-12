@@ -11,7 +11,7 @@ L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence 
 
 Voici l'architecture du modèle utilisé pour réaliser cette tâche:
 
-![Architecture](./images/architecture.png)
+![Architecture](./architecture.png)
 
 *Figure1: Architecture du modèle d'estimation de poses 3D*
 
