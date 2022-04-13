@@ -48,3 +48,21 @@ Action | Vérité terrain | Motionet | CVMNet(1bloc + Motion Loss) | CVMNet(2blo
  WalkDog | !["GT"](./demos/evaluation/gt/S9_WalkDog_2/demo.gif) | !["Motionet"](./demos/motionet/S9_WalkDog_2/demo.gif) | !["b1l110"](./demos/evaluation/model_bloc1_loss110/clips/S9_WalkDog_2/demo.gif) | !["b2l110"](./demos/evaluation/model_bloc2_loss110/clips/S9_WalkDog_2/demo.gif) |
  Walking | !["GT"](./demos/evaluation/gt/S11_Walking%201_2/demo.gif) | !["Motionet"](./demos/motionet/S11_Walking%201_2/demo.gif) | !["b1l110"](./demos/evaluation/model_bloc1_loss110/clips/S11_Walking%201_2/demo.gif) | !["b2l110"](./demos/evaluation/model_bloc2_loss110/clips/S11_Walking%201_2/demo.gif) |
  WalkTogether | !["GT"](./demos/evaluation/gt/S11_WalkTogether_1/demo.gif) | !["Motionet"](./demos/motionet/S11_WalkTogether_1/demo.gif) | !["b1l110"](./demos/evaluation/model_bloc1_loss110/clips/S11_WalkTogether_1/demo.gif) | !["b2l110"](./demos/evaluation/model_bloc2_loss110/clips/S11_WalkTogether_1/demo.gif) |
+
+### Résultats qualitatifs avec le modèle CVMNet (1 bloc + Laplacian Loss)
+Action | CVMNet(1bloc + Laplacian Loss) |
+:-----:|:-----:|
+ Directions | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_Directions_2/demo.gif) |
+ Discussion | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_Discussion%202_2/demo.gif) |
+ Eating | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S11_Eating_0/demo.gif) |
+ Greeting | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_Greeting%201_0/demo.gif) |
+ Photo | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_Photo_2/demo.gif) |
+ Posing | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_Posing%201_3/demo.gif) |
+ Purchases | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S11_Purchases_0/demo.gif) |
+ Sitting | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S11_Sitting_3/demo.gif) |
+ SittingDown | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_SittingDown%201_0/demo.gif) |
+ Smoking | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S11_Smoking_3/demo.gif) |
+ Waiting | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_Waiting_1/demo.gif) |
+ WalkDog | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S9_WalkDog_2/demo.gif) |
+ Walking | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S11_Walking%201_2/demo.gif) |
+ WalkTogether | !["b1l101"](./demos/evaluation/model_bloc1_loss101/clips/S11_WalkTogether_1/demo.gif) |
