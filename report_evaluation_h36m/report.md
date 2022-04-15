@@ -7,6 +7,10 @@ L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence 
 
 ![f](https://render.githubusercontent.com/render/math?math={P_{3D}=f(P_{2D})})
 
+$$
+P_{3D}=f(P_{2D})
+$$
+
 ![P2D](https://render.githubusercontent.com/render/math?math=P_{2D}) est de dimension [1,T,2xJ] et ![P3D](https://render.githubusercontent.com/render/math?math=P_{3D}) est de dimension [1,T,3xJ]
 
 Voici l'architecture du modèle utilisé pour réaliser cette tâche:
