@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report-20220415.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="rapport-devaluation-du-mod%C3%A8le-cvmnet">Rapport d'evaluation du modèle CVMNet</h1>
+<h2 id="architecture-du-mod%C3%A8le">Architecture du modèle</h2>
+<p>On considère une pose par un vecteur des positions des articulations du squelette. On simplifie le squelette à un nombre d'articulations J=17.</p>
+<p>Une séquence de pose est une suite de vecteurs décrivant les poses du squelette en fonction du temps. On considère en comme donnée d'entrée du modèle une séquence de poses en 2D qu'on note <img src="https://render.githubusercontent.com/render/math?math=P_{2D}" alt="P2D"> et comme donnée résultat une séquence de pose en 3D <img src="https://render.githubusercontent.com/render/math?math=P_{3D}" alt="P2D">.
+L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence de pose de longueur T :</p>
+<!-- Une séquence de pose est une suite de vecteurs décrivant les poses du squelette en fonction du temps. On considère en comme donnée d'entrée du modèle une séquence de poses en 2D qu'on note $P_{2D}$ et comme donnée résultat une séquence de pose en 3D $P_{3D}$.
+L'objectif du modèle est de calculer la transformation 2D vers 3D du séquence de pose de longueur T : -->
+<p><img src="https://render.githubusercontent.com/render/math?math={P_{3D}=f(P_{2D})}" alt="f"></p>
+<!-- $$
+P_{3D}=f(P_{2D})
+$$ -->
+<!-- ![P2D](https://render.githubusercontent.com/render/math?math=P_{2D}) est de dimension [1,T,2xJ] et ![P3D](https://render.githubusercontent.com/render/math?math=P_{3D}) est de dimension [1,T,3xJ] -->
+<!-- $P_{2D}$ est de dimension [1,T,2xJ] et $P_{3D}$ est de dimension [1,T,3xJ] -->
+<p>Voici l'architecture du modèle utilisé pour réaliser cette tâche:</p>
+<p><img src="./architecture.png" alt="Architecture"></p>
+<p><em>Figure1: Architecture du modèle d'estimation de poses 3D</em></p>
+<h2 id="evaluation-avec-la-base-de-donn%C3%A9es-human36m">Evaluation avec la base de données Human3.6m</h2>
+<p>On évalue le modèle en utilisant le Protocol#1 du benchmark Human3.6m. Le tableau Table 1 ci-après représente les résultats de l'évaluation.</p>
+<p><em>Table1: Tableau comparatif des résultats de l'évaluation des différents modèles. Les modèles CVMNet ont été entraîné pendant 150 epochs sauf le celui avec la fonction laplacienne qui a été entrainé sur 50 epochs pour des raisons de complexité temporelle.</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Modèles</th>
+<th style="text-align:center">Directions</th>
+<th style="text-align:center">Discussion</th>
+<th style="text-align:center">Eating</th>
+<th style="text-align:center">Greeting</th>
+<th style="text-align:center">Phoning</th>
+<th style="text-align:center">Photo</th>
+<th style="text-align:center">Posing</th>
+<th style="text-align:center">Purchases</th>
+<th style="text-align:center">Sitting</th>
+<th style="text-align:center">SittingDown</th>
+<th style="text-align:center">Smoking</th>
+<th style="text-align:center">Waiting</th>
+<th style="text-align:center">WalkDog</th>
+<th style="text-align:center">Walking</th>
+<th style="text-align:center">WalkTogether</th>
+<th style="text-align:center">Average</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CVMNet (1 bloc)</td>
+<td style="text-align:center">85.25</td>
+<td style="text-align:center">129.41</td>
+<td style="text-align:center">109.17</td>
+<td style="text-align:center">101.22</td>
+<td style="text-align:center">117.17</td>
+<td style="text-align:center">137.31</td>
+<td style="text-align:center">86.12</td>
+<td style="text-align:center">293.37</td>
+<td style="text-align:center">152.75</td>
+<td style="text-align:center">248.98</td>
+<td style="text-align:center">119.87</td>
+<td style="text-align:center">105.45</td>
+<td style="text-align:center">261.62</td>
+<td style="text-align:center">87.20</td>
+<td style="text-align:center">87.81</td>
+<td style="text-align:center">142.47</td>
+</tr>
+<tr>
+<td style="text-align:center">CVMNet (2 blocs)</td>
+<td style="text-align:center">89.18</td>
+<td style="text-align:center">121.00</td>
+<td style="text-align:center">135.62</td>
+<td style="text-align:center">101.21</td>
+<td style="text-align:center">130.79</td>
+<td style="text-align:center">137.12</td>
+<td style="text-align:center">85.83</td>
+<td style="text-align:center">226.98</td>
+<td style="text-align:center">191.31</td>
+<td style="text-align:center">261.97</td>
+<td style="text-align:center">133.23</td>
+<td style="text-align:center">103.17</td>
+<td style="text-align:center">218.35</td>
+<td style="text-align:center">83.93</td>
+<td style="text-align:center">86.03</td>
+<td style="text-align:center">141.25</td>
+</tr>
+<tr>
+<td style="text-align:center">CVMNet (1 bloc) + Motion Loss</td>
+<td style="text-align:center">83.67</td>
+<td style="text-align:center">107.73</td>
+<td style="text-align:center">118.72</td>
+<td style="text-align:center">95.51</td>
+<td style="text-align:center">113.39</td>
+<td style="text-align:center">131.98</td>
+<td style="text-align:center">82.64</td>
+<td style="text-align:center">221.00</td>
+<td style="text-align:center">148.74</td>
+<td style="text-align:center">232.07</td>
+<td style="text-align:center">113.56</td>
+<td style="text-align:center">95.76</td>
+<td style="text-align:center">195.00</td>
+<td style="text-align:center">85.04</td>
+<td style="text-align:center">83.95</td>
+<td style="text-align:center">127.99</td>
+</tr>
+<tr>
+<td style="text-align:center">CVMNet (2 blocs) + Motion Loss</td>
+<td style="text-align:center">80.42</td>
+<td style="text-align:center">109.11</td>
+<td style="text-align:center">116.61</td>
+<td style="text-align:center">91.58</td>
+<td style="text-align:center">123.84</td>
+<td style="text-align:center">127.46</td>
+<td style="text-align:center">83.96</td>
+<td style="text-align:center">169.57</td>
+<td style="text-align:center">162.69</td>
+<td style="text-align:center">224.39</td>
+<td style="text-align:center">120.81</td>
+<td style="text-align:center">97.64</td>
+<td style="text-align:center">175.52</td>
+<td style="text-align:center">84.30</td>
+<td style="text-align:center">84.20</td>
+<td style="text-align:center">124.20</td>
+</tr>
+<tr>
+<td style="text-align:center">CVMNet (1 bloc) + Laplacian Loss</td>
+<td style="text-align:center">101.87</td>
+<td style="text-align:center">109.28</td>
+<td style="text-align:center">132.03</td>
+<td style="text-align:center">112.66</td>
+<td style="text-align:center">132.24</td>
+<td style="text-align:center">137.74</td>
+<td style="text-align:center">101.83</td>
+<td style="text-align:center">143.06</td>
+<td style="text-align:center">173.79</td>
+<td style="text-align:center">250.92</td>
+<td style="text-align:center">132.66</td>
+<td style="text-align:center">108.66</td>
+<td style="text-align:center">148.33</td>
+<td style="text-align:center">102.81</td>
+<td style="text-align:center">107.41</td>
+<td style="text-align:center">133.55</td>
+</tr>
+<tr>
+<td style="text-align:center">CVMNet (2 blocs) + Laplacian Loss</td>
+<td style="text-align:center">93.29</td>
+<td style="text-align:center">105.10</td>
+<td style="text-align:center">125.78</td>
+<td style="text-align:center">100.43</td>
+<td style="text-align:center">122.13</td>
+<td style="text-align:center">123.24</td>
+<td style="text-align:center">91.52</td>
+<td style="text-align:center">126.30</td>
+<td style="text-align:center">160.37</td>
+<td style="text-align:center">218.60</td>
+<td style="text-align:center">124.29</td>
+<td style="text-align:center">98.24</td>
+<td style="text-align:center">151.97</td>
+<td style="text-align:center">95.67</td>
+<td style="text-align:center">97.28</td>
+<td style="text-align:center">122.77</td>
+</tr>
+<tr>
+<td style="text-align:center">CVMNet (1 bloc 2048 channels) + Motion Loss</td>
+<td style="text-align:center">75.87</td>
+<td style="text-align:center">81.21</td>
+<td style="text-align:center">121.50</td>
+<td style="text-align:center">79.82</td>
+<td style="text-align:center">108.64</td>
+<td style="text-align:center">105.01</td>
+<td style="text-align:center">74.01</td>
+<td style="text-align:center">96.15</td>
+<td style="text-align:center">163.11</td>
+<td style="text-align:center">218.32</td>
+<td style="text-align:center">111.94</td>
+<td style="text-align:center">82.91</td>
+<td style="text-align:center">111.98</td>
+<td style="text-align:center">77.02</td>
+<td style="text-align:center">78.16</td>
+<td style="text-align:center">106.22</td>
+</tr>
+<tr>
+<td style="text-align:center">MotioNet</td>
+<td style="text-align:center">45.48</td>
+<td style="text-align:center">51.28</td>
+<td style="text-align:center">49.43</td>
+<td style="text-align:center">51.91</td>
+<td style="text-align:center">52.58</td>
+<td style="text-align:center">66.46</td>
+<td style="text-align:center">50.59</td>
+<td style="text-align:center">48.46</td>
+<td style="text-align:center">55.90</td>
+<td style="text-align:center">64.25</td>
+<td style="text-align:center">53.79</td>
+<td style="text-align:center">52.84</td>
+<td style="text-align:center">58.85</td>
+<td style="text-align:center">49.99</td>
+<td style="text-align:center">48.25</td>
+<td style="text-align:center">53.47</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quelques-r%C3%A9sultats-graphiques">Quelques résultats graphiques</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Action</th>
+<th style="text-align:center">Vérité terrain</th>
+<th style="text-align:center">Motionet</th>
+<th style="text-align:center">CVMNet(1bloc + Motion Loss)</th>
+<th style="text-align:center">CVMNet(2blocs + Motion Loss)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Directions</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_Directions_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_Directions_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_Directions_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_Directions_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Discussion</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_Discussion 2_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_Discussion 2_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_Discussion 2_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_Discussion 2_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Eating</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S11_Eating_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S11_Eating_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S11_Eating_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S11_Eating_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Greeting</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_Greeting 1_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_Greeting 1_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_Greeting 1_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_Greeting 1_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Photo</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_Photo_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_Photo_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_Photo_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_Photo_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Posing</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_Posing 1_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_Posing 1_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_Posing 1_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_Posing 1_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Purchases</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S11_Purchases_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S11_Purchases_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S11_Purchases_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S11_Purchases_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Sitting</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S11_Sitting_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S11_Sitting_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S11_Sitting_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S11_Sitting_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">SittingDown</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_SittingDown 1_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_SittingDown 1_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_SittingDown 1_0/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_SittingDown 1_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Smoking</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S11_Smoking_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S11_Smoking_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S11_Smoking_3/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S11_Smoking_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Waiting</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_Waiting_1/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_Waiting_1/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_Waiting_1/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_Waiting_1/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">WalkDog</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S9_WalkDog_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S9_WalkDog_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S9_WalkDog_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S9_WalkDog_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Walking</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S11_Walking 1_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S11_Walking 1_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S11_Walking 1_2/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S11_Walking 1_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">WalkTogether</td>
+<td style="text-align:center"><img src="./demos/evaluation/gt/S11_WalkTogether_1/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/motionet/S11_WalkTogether_1/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss110/clips/S11_WalkTogether_1/demo.gif" alt=""></td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc2_loss110/clips/S11_WalkTogether_1/demo.gif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h3 id="r%C3%A9sultats-qualitatifs-avec-le-mod%C3%A8le-cvmnet-1-bloc--laplacian-loss">Résultats qualitatifs avec le modèle CVMNet (1 bloc + Laplacian Loss)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Action</th>
+<th style="text-align:center">CVMNet(1bloc + Laplacian Loss)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Directions</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_Directions_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Discussion</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_Discussion 2_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Eating</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S11_Eating_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Greeting</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_Greeting 1_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Photo</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_Photo_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Posing</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_Posing 1_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Purchases</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S11_Purchases_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Sitting</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S11_Sitting_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">SittingDown</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_SittingDown 1_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Smoking</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S11_Smoking_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Waiting</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_Waiting_1/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">WalkDog</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S9_WalkDog_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Walking</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S11_Walking 1_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">WalkTogether</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_bloc1_loss101/clips/S11_WalkTogether_1/demo.gif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h3 id="r%C3%A9sultats-qualitatifs-avec-le-mod%C3%A8le-cvmnet-1-bloc-2048-c--motion-loss">Résultats qualitatifs avec le modèle CVMNet (1 bloc 2048 c + Motion Loss)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Action</th>
+<th style="text-align:center">CVMNet(1bloc + Laplacian Loss)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Directions</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_Directions_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Discussion</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_Discussion 2_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Eating</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S11_Eating_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Greeting</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_Greeting 1_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Photo</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_Photo_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Posing</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_Posing 1_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Purchases</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S11_Purchases_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Sitting</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S11_Sitting_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">SittingDown</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_SittingDown 1_0/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Smoking</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S11_Smoking_3/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Waiting</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_Waiting_1/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">WalkDog</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S9_WalkDog_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">Walking</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S11_Walking 1_2/demo.gif" alt=""></td>
+</tr>
+<tr>
+<td style="text-align:center">WalkTogether</td>
+<td style="text-align:center"><img src="./demos/evaluation/model_stage1_loss110/clips/S11_WalkTogether_1/demo.gif" alt=""></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
