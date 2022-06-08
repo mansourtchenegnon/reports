@@ -51,23 +51,23 @@ On peut remarquer qu'on obtient les meilleurs résultats avec lorsqu'on utilise 
 
 ### 2. Evaluation des performances temporelles: la métrique MPJDE
 
-Afin d'évaluer les performances des modèles sur l'aspect temporelle, on utilise la métrique **Mean Per Joint Delta Error** *MPJDE(ti)* qui représente la moyenne des erreurs des différentiels temporels moyens(on note *dtpm*) par articulation pour un interval de temps *ti*. Un différentiel temporel *dtp* représente pour une articulation j à un instant t, la distance par unité de temps entre sa position à l'instant _t-ti_ et celle à l'instant _t+ti_:
+Afin d'évaluer les performances des modèles sur l'aspect temporelle, on utilise la métrique **Mean Per Joint Delta Error** *MPJDE(&tau;)* qui représente la moyenne des erreurs des différentiels temporels moyens(on note *&delta;j,&tau;*) par articulation pour un interval de temps *&tau;*. Un différentiel temporel *&delta;j,&tau;,t* représente pour une articulation j à un instant t, la distance par unité de temps entre sa position à l'instant _t-&tau;_ et celle à l'instant _t+&tau;_ :
 
-![](https://latex.codecogs.com/svg.image?dtp(j,t,ti)&space;=&space;\frac{\left\|&space;P(j,t&plus;ti)&space;-&space;P(j,&space;t-ti)\right\|_2}{2*ti})
+![](dtp.svg)
 
-Voici comment se calcule *dtpm(j,ti)*:
+Voici comment se calcule *dtm(j,&tau;)*:
 
-![](https://latex.codecogs.com/svg.image?dtm(j,ti)&space;=&space;\frac{1}{T-ti}&space;\sum_{t=ti}^{T}&space;dtp(j,t,ti))
+![](dtm.svg)
 
-On a alors la _MPJDE(ti)_, calculé entre l'estimation et la vérité terrain qui s'obtient par l'équation: 
+On a alors la _MPJDE(&tau;)_, calculé entre l'estimation et la vérité terrain qui s'obtient par l'équation: 
 
-![](https://latex.codecogs.com/svg.image?MPJDE(ti)&space;=&space;\frac{1}{J}\sum_{j\in&space;J}^{}|dtm^p(j,ti)&space;-&space;dtm^{gt}(j,ti)|) ;
+![](mpjde.svg) ;
 
 ![](https://render.githubusercontent.com/render/math?math=dtm^{p}) correspond le différentiel temporel moyen sur l'estimation et ![](https://render.githubusercontent.com/render/math?math=dtm^{gt}) le différentiel temporel moyen sur la vérité terrain.
 
-Le tableau qui suit compare la _MPJDE(ti=1)_ pour entre les deux meilleures modèles CVMNet et MotioNet.
+Le tableau qui suit compare la _MPJDE(&tau;=1)_ pour entre les deux meilleures modèles CVMNet et MotioNet.
 
-*Table2: Tableau comparatif de la MPJDE(ti=1) entre les différents modèles. D'après l'équation, on a des valeurs en mm/frame.*
+*Table2: Tableau comparatif de la MPJDE(&tau;=1) entre les différents modèles. D'après l'équation, on a des valeurs en mm/frame.*
 
 |                Modèles                | Directions | Discussion | Eating | Greeting | Phoning | Photo | Posing | Purchases | Sitting | SittingDown | Smoking | Waiting | WalkDog | Walking | WalkTogether | Average |
 | :-----------------------------------: | :--------: | :--------: | :----: | :------: | :-----: | :---: | :----: | :-------: | :-----: | :---------: | :-----: | :-----: | :-----: | :-----: | :----------: | :-----: |
